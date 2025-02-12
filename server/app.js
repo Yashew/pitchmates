@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
 import mongoose from 'mongoose';
+import cookieParser from "cookie-parser";
+import authRoute from "./Routes/AuthRoute.js"
 
 dotenv.config()
 
@@ -30,3 +32,7 @@ app.listen(PORT, () => {
   console.log(`Server is listening on port http://localhost:${PORT}`);
 });
 
+app.use(cookieParser());
+
+
+app.use("/", authRoute);
